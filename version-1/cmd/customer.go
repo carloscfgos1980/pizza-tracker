@@ -23,7 +23,7 @@ type OrderRequest struct {
 	Instructions []string `form:"instructions" binding:"omitempty,max=200"`
 }
 
-func (h *handler) ServeNewOrderPost(c *gin.Context) {
+func (h *handler) ServeNewOrderForm(c *gin.Context) {
 	c.HTML(http.StatusOK, "order.tmpl", OrderFormData{
 		PizzaTypes: models.PizzaTypes,
 		PizzaSizes: models.PizzaSizes,
