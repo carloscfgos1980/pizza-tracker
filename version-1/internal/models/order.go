@@ -8,9 +8,9 @@ import (
 )
 
 var (
-	OrderStatus = []string{"Order Placed", "Preparing", "Quality Check", "Ready"}
-	PizzaSize   = []string{"Small", "Medium", "Large", "X Large"}
-	PizzaTypes  = []string{"Margherita", "Pepperoni", "BBQ Chicken", "Veggie", "Hawaiian"}
+	OrderStatuses = []string{"Order Placed", "Preparing", "Quality Check", "Ready"}
+	PizzaSizes    = []string{"Small", "Medium", "Large", "X Large"}
+	PizzaTypes    = []string{"Margherita", "Pepperoni", "BBQ Chicken", "Veggie", "Hawaiian"}
 )
 
 type OrderModel struct {

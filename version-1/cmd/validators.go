@@ -11,7 +11,7 @@ import (
 func RegisterCustomValidators() {
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		v.RegisterValidation("pizza_valid_type", createSliceValidator(models.PizzaTypes))
-		v.RegisterValidation("pizza_valid_size", createSliceValidator(models.PizzaSize))
+		v.RegisterValidation("pizza_valid_size", createSliceValidator(models.PizzaSizes))
 	}
 }
 
