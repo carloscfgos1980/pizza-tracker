@@ -18,8 +18,8 @@ type OrderRequest struct {
 	Name         string   `form:"name" binding:"required,min=2,max=100"`
 	Phone        string   `form:"phone" binding:"required,min=10,max=15"`
 	Address      string   `form:"address" binding:"required,min=5,max=200"`
-	Size         []string `form:"size" binding:"required,min=1,dive,valid_pizza_size"`
-	PizzaType    []string `form:"pizza" binding:"required,min=1,dive,valid_pizza_type"`
+	Size         []string `form:"size" binding:"required,min=1,dive,pizza_valid_size"`
+	PizzaType    []string `form:"pizza" binding:"required,min=1,dive,pizza_valid_type"`
 	Instructions []string `form:"instructions" binding:"omitempty,max=200"`
 }
 

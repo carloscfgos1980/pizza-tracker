@@ -5,7 +5,7 @@
 <div class="flex items-center justify-center p-6 md:p-8">
 <div class="bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-3xl shadow-xl border border-white/20 max-w-2xl w-full">
     <h1 class="text-4xl font-bold text-gray-900 mb-8 tracking-tight">New Pizza Order</h1>
-    <form action="/new/order" method="POST" class="space-y-6"> 
+    <form action="/new-order" method="POST" class="space-y-6"> 
         <div class="space-y-5">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Customer Information</h2>
             <div>
@@ -52,12 +52,13 @@
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2">Pizza Types</label>
-                <select name="pizza" multiple required class="w-full p-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all">
+                <select name="pizza" required
+                    class="w-full p-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all">
                     {{range $.PizzaTypes}}
                     <option value="{{.}}">{{.}}</option>
                     {{end}}
                 </select>
-        </div>
+            </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2">Special Instructions</label>
                 <textarea name="instructions" maxlength="200" rows="2" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all resize-none"></textarea>
@@ -68,23 +69,20 @@
     let pizzaCount = 0;
 
     function addPizza() {
-
         const clone = document.getElementById('pizzaTemplate').content.cloneNode(true);
         clone.querySelector('.pizza-number').textContent = ++pizzaCount;
         document.getElementById('pizzas').appendChild(clone);
     }
 
-    function removePizza(button) {
-        button.closest('.pizza-item').remove();
-        updatePizzaNumbers();
-    }
-
-    function updatePizzaNumbers() {
-        const pizzas = document.querySelectorAll('.pizza-item');
-        pizzas.forEach((pizza, index) => {
-            pizza.querySelector('.pizza-number').textContent = index + 1;
+    function removePizza(btn) {
+        btn.closest('.pizza-item').remove();
+        document.querySelectorAll('.pizza-number').forEach((item, index) => {
+            item.querySelector('.pizza-number').textContent = index + 1;
         });
-        pizzaCount = pizzas.length;
+        pizzaCount = document.querySelectorAll('.pizza-item').length;
     }
+    addPizza(); // Add the first pizza by default
+
+
 </script>
 {{template "bottom" .}}

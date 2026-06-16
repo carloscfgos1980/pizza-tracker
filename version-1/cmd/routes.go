@@ -7,5 +7,5 @@ func setupRoutes(router *gin.Engine, h *handler) {
 	router.POST("/new-order", h.HandlerNewOrderPost)
 	router.GET("/customer/:id", h.ServeCustomerOrder)
 
-	router.Static("/static", "/templates/static")
+	router.Static("/static", "./templates/static")
 }
